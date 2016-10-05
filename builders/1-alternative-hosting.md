@@ -1,5 +1,5 @@
 # Alternative Hosting on GitHub
-The gClass builder assignment "Establishing a Web Site" directs you to the UW service Vergil for hosting your files. Vergil is an awesome service provided by the UW, but it has some draw backs. An alternative solution is provided by GitHub: [GitHub Pages](https://pages.github.com/).
+The gClass builder assignment "Establishing a Web Site" directs you to the UW service Vergil for hosting your files. Vergil is an awesome service provided by the UW, but it has some drawbacks. An alternative solution is provided by GitHub: [GitHub Pages](https://pages.github.com/).
 
 ## What is GitHub?
 GitHub is a centralized location where people store [open sourced](https://simple.wikipedia.org/wiki/Open_source) code. It's a hub were people collaborate on ideas both big and small. 
@@ -11,7 +11,8 @@ GitHub a great tool to share your projects with others (be it job recruiters, fr
 [Git](https://en.wikipedia.org/wiki/Git) is a [version control system](https://en.wikipedia.org/wiki/Version_control). It is a bit out of scope for this builder, but essentially it facilitates multiple people all working on the same code at once.
 
 # Builder Requirements (What to do)
-## After you have uploaded your Web Site to vergil, try to upload to GitHub Pages (instructions [here](https://pages.github.com/) - follow "User or Organization site")
+### After you have uploaded your Web Site to vergil, try to upload to GitHub Pages (instructions [here](https://pages.github.com/))
+#### Follow the "User or Organization site" option, summarized below:
   - Make a GitHub Account
   - Decide how you want to use it (terminal or desktop client)
   - Make a repository using your GitHub username (named username.github.io)
