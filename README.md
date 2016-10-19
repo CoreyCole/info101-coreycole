@@ -6,3 +6,6 @@ What you're currently reading is the main README file of the repository. This is
 
 ## Builder links
  - Establishing a Web Site: [Alternative hosting on GitHub](builders/1-alternative-hosting.md)
+
+## Starter code links
+ - [Bootstrapped web site](starter-code/bootstrap/)
