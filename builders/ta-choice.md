@@ -24,3 +24,5 @@ When I learned about databases in INFO 101, I was excited by them, but unsure ho
   - Open up MySQL Workbench (installed on lab machines)
   - create a new connection to your database
     - paste in your endpoint URL and port (delete the 3306 port off the end of the URL, place in port field)
+    - username: corey
+    - password: BobBoiko
