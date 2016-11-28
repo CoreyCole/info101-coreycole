@@ -1,0 +1,21 @@
+<div class="background">
+  <md-card class="main" *ngIf=!loggedIn>
+    <md-card-title>Login</md-card-title>
+    <md-card-content>
+      <button md-raised-button (click)="facebookLogin()" class="fb">
+        <md-icon>
+          <img src="/assets/fb_logo.png" alt="facebook login" class="fb">
+        </md-icon>
+        <span class="google-spn">Sign in with Facebook</span>
+      </button>
+    </md-card-content>
+  </md-card>
+  <md-card class="main" *ngIf="loggedIn">
+    <md-card-title>Login Success</md-card-title>
+    <md-card-content>
+      <button md-raised-button [routerLink]="['/home']">Leaderboard</button>
+      <button md-raised-button [routerLink]="['/my-bumps']">View My Bumps</button>
+      <button md-raised-button [routerLink]="['/add-bump']">Request Bump</button>
+    </md-card-content>
+  </md-card>
+</div>

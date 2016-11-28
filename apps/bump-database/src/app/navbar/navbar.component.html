@@ -1,0 +1,49 @@
+<div class="app">
+
+  <div class="content">
+    <md-sidenav-layout fullscreen>
+      <md-sidenav #start (open)="closeStartButton.focus()">
+        <md-nav-list>
+          <div *ngIf="loggedIn" >
+            <a md-list-item [routerLink]="['/home']">
+              Leaderboard
+            </a>
+            <a md-list-item [routerLink]="['/my-bumps']">
+              My Bumps
+            </a>
+            <a md-list-item [routerLink]="['/add-bump']">
+              Request Bump
+            </a>
+          </div>
+          <div *ngIf="isAdmin" >
+            <a md-list-item [routerLink]="['admin/issue-bumps']">
+              Issue Bumps
+            </a>
+          </div>
+          <div *ngIf="!loggedIn">
+            <a md-list-item routerLink="auth/login" >
+              Login
+            </a>
+          </div>
+        </md-nav-list>
+        <button *ngIf="loggedIn" md-button class="sidenav-btn" #closeStartButton (click)="logout()">Logout</button>
+        <button md-button class="sidenav-btn" #closeStartButton (click)="start.close()">Close Sidebar</button>
+      </md-sidenav>
+      <md-toolbar color="primary">
+        <button md-icon-button (click)=toggleNav()>
+          <i class="material-icons">menu</i>
+        </button>
+        <h2 routerLink="/home" [routerLinkActive]="['show-title']">
+          Bump Leaderboard
+        </h2>
+        <h2 routerLink="/auth/login" [routerLinkActive]="['show-title']">
+          Login
+        </h2>
+        <h2 routerLink="/admin/issue-bumps" [routerLinkActive]="['show-title']">
+          Issue Bumps
+        </h2>
+      </md-toolbar>
+      <ng-content></ng-content>
+    </md-sidenav-layout>
+  </div>
+</div>
