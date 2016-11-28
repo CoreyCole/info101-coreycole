@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         }
         console.log(auth.facebook);
         console.log(body);
-        this.http.post('http://localhost:80/api/students', body).subscribe(res => {
+        this.http.post('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/students', body).subscribe(res => {
           console.log(res);
         });
       } else {

@@ -14,6 +14,7 @@ export class AddBumpViewComponent implements OnInit {
   public bumpDate: any;
   public bumps: Observable<any>;
   public uid: string;
+  public error: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,7 +30,7 @@ export class AddBumpViewComponent implements OnInit {
     this.af.auth.subscribe(auth => {
       if (auth) {
         this.uid = auth.uid;
-        this.bumps = this.http.get('http://localhost:80/api/bumps/uid/' + this.uid).map(data => data.json());
+        this.bumps = this.http.get('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps/uid/' + this.uid).map(data => data.json());
       }
     });
     
@@ -44,9 +45,13 @@ export class AddBumpViewComponent implements OnInit {
       forWhat: formValue.forWhat,
     };
     console.log(data);
-    this.http.post('http://localhost:80/api/bumps', data).subscribe(res => {
+    if (data.uid && data.expAmount && data.whatDay && data.forWhat) {
+    this.http.post('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps', data).subscribe(res => {
       console.log(res);
       location.reload();
     });
+    } else {
+      this.error = 'invalid input';
+    }
   }
 }

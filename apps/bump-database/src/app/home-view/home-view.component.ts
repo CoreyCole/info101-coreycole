@@ -14,7 +14,7 @@ export class HomeViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:80/api/bumps').subscribe(data => {
+    this.http.get('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps').subscribe(data => {
       this.students = JSON.parse(data['_body']);
     });
   }

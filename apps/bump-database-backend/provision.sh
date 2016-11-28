@@ -15,7 +15,7 @@ apt-get update
 # (gets us add-apt-repository command)
 apt-get install -y software-properties-common
 
-# install Node.js v7.x
+# install Node.js v5.x
 curl -sL https://deb.nodesource.com/setup_7.x | bash -
 apt-get install -y nodejs
 

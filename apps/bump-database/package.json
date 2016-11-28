@@ -9,7 +9,7 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "deploy": "scp -r -v dist/ server.js ubuntu@ec2-52-90-225-103.compute-1.amazonaws.com:~/"
+    "deploy": "scp -r -v dist/ secret/ server.js package.json backend-routes/ provision.sh ubuntu@ec2-34-193-24-15.compute-1.amazonaws.com:~/"
   },
   "private": true,
   "dependencies": {

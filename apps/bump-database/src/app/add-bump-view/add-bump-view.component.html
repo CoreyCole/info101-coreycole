@@ -2,6 +2,7 @@
   <md-card class="main">
     <md-card-title>Request Bump</md-card-title>
     <md-card-content>
+      <p>{{error}}</p>
       <form [formGroup]="bumpForm" (ngSubmit)="requestBump(bumpForm.value)">
         <md-input formControlName="amount" type="text" placeholder="amount">
           <span md-suffix>XP</span>

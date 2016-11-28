@@ -15,17 +15,17 @@ export class IssueBumpsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.bumps = this.http.get('http://localhost:80/api/bumps/requested').map(data => data.json());
+    this.bumps = this.http.get('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps/requested').map(data => data.json());
   }
 
   issue(bumpId: number) {
-    this.http.post('http://localhost:80/api/bumps/issue/', { bumpId: bumpId.toString() }).subscribe(res => {
+    this.http.post('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps/issue/', { bumpId: bumpId.toString() }).subscribe(res => {
       console.log(res);
     });
   }
 
   delete(bumpId: number) {
-    this.http.delete('http://localhost:80/api/bumps/delete/' + bumpId).subscribe(res => {
+    this.http.delete('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps/delete/' + bumpId).subscribe(res => {
       console.log(res);
     });
   }
