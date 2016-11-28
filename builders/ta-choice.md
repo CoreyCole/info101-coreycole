@@ -13,11 +13,13 @@ When I learned about databases in INFO 101, I was excited by them, but unsure ho
     - "Master Username" to be "corey"
     - "Master Password" to be BobBoiko
   - Click "Launch DB Instance"
+
 #### 4) Get the endpoint URL and Port for your shiny new database
   - Navigate to AWS RDS service
   - Click "instances" on left navigation
   - Click the drop down arrow for your "bump-db" instance
   - Copy the endpoint URL from the "Endpoint" section in your bump-db instance Details
+
 #### 5) Interface with your database!
   - Open up MySQL Workbench (installed on lab machines)
   - create a new connection to your database
