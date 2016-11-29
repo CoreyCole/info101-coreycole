@@ -29,6 +29,8 @@ When I learned about databases in INFO 101, I was excited by them, but unsure ho
 
 #### 6) Create tables in your database
 ```
+CREATE DATABASE bump;
+USE bump;
 CREATE TABLE Students (
   uid VARCHAR(50) NOT NULL PRIMARY KEY,
   displayName VARCHAR(50) NOT NULL,
