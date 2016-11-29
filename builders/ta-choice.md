@@ -26,3 +26,21 @@ When I learned about databases in INFO 101, I was excited by them, but unsure ho
     - paste in your endpoint URL and port (delete the 3306 port off the end of the URL, place in port field)
     - username: corey
     - password: BobBoiko
+
+#### 6) Create tables in your database
+```
+CREATE TABLE Students (
+  uid VARCHAR(50) NOT NULL PRIMARY KEY,
+  displayName VARCHAR(50) NOT NULL,
+  email VARCHAR(50),
+  facebookUid VARCHAR(50)
+);
+CREATE TABLE Bumps (
+  bumpId int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  uid VARCHAR(50),
+  expAmount int NOT NULL,
+  timeRequested TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  whatDay DATE,
+  forWhat VARCHAR(255) DEFAULT 'for meritous behavior'
+);
+```
