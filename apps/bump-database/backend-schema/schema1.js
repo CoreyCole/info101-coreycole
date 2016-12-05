@@ -10,7 +10,7 @@ CREATE TABLE Bumps (
   uid VARCHAR(50),
   expAmount int NOT NULL,
   timeRequested TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  whatDay DATE NOT NULL,
+  whatDay DATE,
   forWhat VARCHAR(255) DEFAULT 'for meritous behavior'
 );
 `

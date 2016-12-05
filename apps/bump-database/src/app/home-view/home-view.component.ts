@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 
+// app
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-home-view',
   templateUrl: './home-view.component.html',
@@ -14,7 +17,7 @@ export class HomeViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.get('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps').subscribe(data => {
+    this.http.get(environment.apiUrl + '/api/bumps').subscribe(data => {
       this.students = JSON.parse(data['_body']);
     });
   }

@@ -98,11 +98,11 @@ router.get('/bumps/uid/:uid', (req, res) => {
 
 router.get('/bumps/requested', (req, res) => {
   var query = `
-    SELECT bumpId, displayName, whatDay, expAmount, issued
+    SELECT B.uid, bumpId, displayName, whatDay, expAmount, issued, forWhat
     FROM Bumps B
       JOIN Students S ON S.uid = B.uid
     WHERE B.issued = 0
-    ORDER BY B.timeRequested asc
+    ORDER BY displayName asc
   `
   connection.query(query, (err, rows, fields) => {
     if (err) throw err
@@ -132,10 +132,10 @@ router.post('/bumps', (req, res) => {
 })
 
 router.post('/bumps/issue', (req, res) => {
-  if (!req.body || !req.body.bumpId) {
+  if (!req.body || !req.body.bumpId || (!req.body.amountIssued && req.body.amountIssued !== 0)) {
     res.status(400).send('Bad request')
   } else {
-    var query = 'UPDATE Bumps SET issued = 1 WHERE bumpId = "' + req.body.bumpId + '"'
+    var query = 'UPDATE Bumps SET issued=1, amountIssued =' + req.body.amountIssued + ' WHERE bumpId = "' + req.body.bumpId + '"'
     connection.query(query, (err, rows, fields) => {
       if (err) throw err
 

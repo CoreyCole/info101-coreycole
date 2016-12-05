@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+// app
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-issue-bumps',
   templateUrl: './issue-bumps.component.html',
@@ -15,17 +18,22 @@ export class IssueBumpsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.bumps = this.http.get('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps/requested').map(data => data.json());
-  }
-
-  issue(bumpId: number) {
-    this.http.post('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps/issue/', { bumpId: bumpId.toString() }).subscribe(res => {
-      console.log(res);
+    this.bumps = this.http.get(environment.apiUrl + '/api/bumps/requested').map(data => data.json());
+    this.bumps.subscribe(data => {
+      console.dir(data);
     });
   }
 
+  issue(bumpId: number, amountIssued: number) {
+    // console.log(bumpId, amountIssued);
+    this.http.post(environment.apiUrl + '/api/bumps/issue/',
+      { bumpId: bumpId.toString(), amountIssued: amountIssued }).subscribe(res => {
+        console.log(res);
+      });
+  }
+
   delete(bumpId: number) {
-    this.http.delete('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps/delete/' + bumpId).subscribe(res => {
+    this.http.delete(environment.apiUrl + '/api/bumps/delete/' + bumpId).subscribe(res => {
       console.log(res);
     });
   }

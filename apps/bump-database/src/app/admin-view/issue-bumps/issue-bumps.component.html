@@ -1,23 +1,31 @@
 <md-card *ngFor="let bump of bumps | async; let i = index">
-  <md-grid-list cols="5" rowHeight="25px">
-    <md-grid-tile>{{bump.displayName}}</md-grid-tile>
+  <md-grid-list cols="4" rowHeight="75px">
+    <md-grid-tile [colspan]="4">{{bump.displayName}}</md-grid-tile>
+    <md-grid-tile [colspan]="4">
+      <p>{{bump.forWhat}}</p>
+    </md-grid-tile>
     <md-grid-tile>{{bump.whatDay | date:"MM/dd"}}</md-grid-tile>
     <md-grid-tile>{{bump.expAmount}}</md-grid-tile>
     <md-grid-tile>
-      <button md-button color="primary" (click)="bump.issued = 1; issue(bump.bumpId)" *ngIf="!bump.issued">
+      <md-input [(ngModel)]="bump.amountIssued" type="number" placeholder="amount" [disabled]="bump.issued == 1">
+        <span md-suffix>XP</span>
+      </md-input>
+    </md-grid-tile>
+    <md-grid-tile>
+      <button md-button color="primary" (click)="bump.issued = 1; issue(bump.bumpId, bump.amountIssued)" *ngIf="!bump.issued">
         Issue
       </button>
       <button md-button color="accent" [disabled]="true" *ngIf="bump.issued">
         Issued
       </button>
     </md-grid-tile>
-    <md-grid-tile>
+    <!--<md-grid-tile>
       <button md-button color="warn" (click)="bump.issued = 1; delete(bump.bumpId)" *ngIf="!bump.issued">
         Delete
       </button>
       <button md-button color="warn" [disabled]="true" *ngIf="bump.issued">
         Deleted
       </button>
-    </md-grid-tile>
+    </md-grid-tile>-->
   </md-grid-list>
 </md-card>

@@ -1,3 +1,16 @@
-<p>
-  my-bumps-view works!
-</p>
+<md-toolbar color="accent">
+  <md-grid-list cols="2">
+    <md-grid-tile>Requested: {{totalRequested}}</md-grid-tile>
+    <md-grid-tile>Issued: {{totalIssued}}</md-grid-tile>
+  </md-grid-list>
+</md-toolbar>
+<div>
+  <md-card *ngFor="let bump of bumps | async">
+    <md-grid-list cols="2" rowHeight="75px">
+      <md-grid-tile [colspan]="2">Requested: {{bump.forWhat}}</md-grid-tile>
+      <md-grid-tile>Requested: {{bump.expAmount}}</md-grid-tile>
+      <md-grid-tile *ngIf="bump.amountIssued">Issued: {{bump.amountIssued}}</md-grid-tile>
+      <md-grid-tile *ngIf="!bump.amountIssued">Issued: False</md-grid-tile>
+    </md-grid-list>
+  </md-card>
+</div>

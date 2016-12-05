@@ -4,6 +4,9 @@ import { Http } from '@angular/http';
 import { AngularFire } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
 
+// app
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-add-bump-view',
   templateUrl: './add-bump-view.component.html',
@@ -30,7 +33,7 @@ export class AddBumpViewComponent implements OnInit {
     this.af.auth.subscribe(auth => {
       if (auth) {
         this.uid = auth.uid;
-        this.bumps = this.http.get('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps/uid/' + this.uid).map(data => data.json());
+        this.bumps = this.http.get(environment.apiUrl + '/api/bumps/uid/' + this.uid).map(data => data.json());
       }
     });
     
@@ -46,7 +49,7 @@ export class AddBumpViewComponent implements OnInit {
     };
     console.log(data);
     if (data.uid && data.expAmount && data.whatDay && data.forWhat) {
-    this.http.post('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/bumps', data).subscribe(res => {
+    this.http.post(environment.apiUrl + '/api/bumps', data).subscribe(res => {
       console.log(res);
       location.reload();
     });

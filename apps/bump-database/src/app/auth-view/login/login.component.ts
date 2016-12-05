@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 
+// app
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,7 +33,7 @@ export class LoginComponent implements OnInit {
         }
         console.log(auth.facebook);
         console.log(body);
-        this.http.post('http://ec2-34-193-24-15.compute-1.amazonaws.com/api/students', body).subscribe(res => {
+        this.http.post(environment.apiUrl + '/api/students', body).subscribe(res => {
           console.log(res);
         });
       } else {
