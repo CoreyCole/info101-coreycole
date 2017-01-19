@@ -1,0 +1,15 @@
+.this-is-a-class {
+  color: red;
+}
+
+#this-is-a-id {
+  color: blue;
+}
+
+span {
+  color: chocolate;
+}
+
+p span {
+  color: purple;
+}
