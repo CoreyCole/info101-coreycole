@@ -74,6 +74,7 @@ router.get('/bumps', (req, res) => {
       SUM(expAmount) AS totalBumpExp
     FROM Bumps B
       JOIN Students S WHERE S.uid = B.uid
+    WHERE B.bumpId > 144
     GROUP BY B.uid
     ORDER BY totalBumpExp desc
   `
