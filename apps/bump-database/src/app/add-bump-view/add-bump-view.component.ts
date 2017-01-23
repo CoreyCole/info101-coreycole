@@ -48,11 +48,15 @@ export class AddBumpViewComponent implements OnInit {
       forWhat: formValue.forWhat,
     };
     console.log(data);
-    if (data.uid && data.expAmount && data.whatDay && data.forWhat) {
-    this.http.post(environment.apiUrl + '/api/bumps', data).subscribe(res => {
-      console.log(res);
-      location.reload();
-    });
+    if (data.uid &&
+        data.expAmount &&
+        (data.expAmount == parseInt(data.expAmount as any)) &&
+        (data.expAmount % 5 == 0) &&
+        data.whatDay && data.forWhat) {
+      this.http.post(environment.apiUrl + '/api/bumps', data).subscribe(res => {
+        console.log(res);
+        location.reload();
+      });
     } else {
       this.error = 'invalid input';
     }

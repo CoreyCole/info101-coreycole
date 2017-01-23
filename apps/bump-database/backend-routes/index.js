@@ -70,11 +70,11 @@ router.get('/bumps', (req, res) => {
   var query = `
     SELECT
       displayName,
-      SUM(CASE WHEN issued=FALSE THEN expAmount ELSE 0 END) AS requestedExp,
-      SUM(expAmount) AS totalBumpExp
+      SUM(expAmount) AS requestedExp,
+      SUM(amountIssued) AS totalBumpExp
     FROM Bumps B
-      JOIN Students S WHERE S.uid = B.uid
-    WHERE B.bumpId > 144
+      JOIN Students S ON S.uid = B.uid
+    WHERE S.currentQuarter=TRUE
     GROUP BY B.uid
     ORDER BY totalBumpExp desc
   `
@@ -115,6 +115,8 @@ router.get('/bumps/requested', (req, res) => {
 router.post('/bumps', (req, res) => {
   if (!req.body.uid ||
       !req.body.expAmount ||
+      req.body.expAmount !== parseInt(req.body.expAmount) ||
+      parseInt(req.body.expAmount) % 5 !== 0 ||
       !req.body.whatDay ||
       !req.body.forWhat) {
     res.status(400).send('Bad request')
@@ -123,7 +125,7 @@ router.post('/bumps', (req, res) => {
       '"' + req.body.uid + '", ' +
       req.body.expAmount + ', ' +
       'STR_TO_DATE("' + req.body.whatDay + '", "%m/%d/%Y"), ' +
-      '"' + req.body.forWhat + '")'
+      '"' + connection.escape(req.body.forWhat) + '")'
     connection.query(query, (err, rows, fields) => {
       if (err) throw err
 

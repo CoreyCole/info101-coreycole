@@ -4,7 +4,7 @@
     <md-card-content>
       <p>{{error}}</p>
       <form [formGroup]="bumpForm" (ngSubmit)="requestBump(bumpForm.value)">
-        <md-input formControlName="amount" type="text" placeholder="amount">
+        <md-input formControlName="amount" type="text" placeholder="amount (multiples of 5)">
           <span md-suffix>XP</span>
         </md-input>
         <md-input formControlName="forWhat" type="text" placeholder="for what?"></md-input>
@@ -29,7 +29,7 @@
       <md-grid-list cols="3" rowHeight="25px">
         <md-grid-tile>{{bump.whatDay | date:"MM/dd"}}</md-grid-tile>
         <md-grid-tile>{{bump.expAmount}}</md-grid-tile>
-        <md-grid-tile>{{bump.issued}}</md-grid-tile>
+        <md-grid-tile>{{bump.amountIssued}}</md-grid-tile>
       </md-grid-list>
     </md-list-item>
   </md-list>
